@@ -4,6 +4,7 @@
 
  const puppeteer = require('puppeteer');
  const random_useragent = require('random-useragent');
+ const fs = require('fs'); //file system
  const { url } = require('./config');
 
  ;(async () => {
@@ -40,6 +41,11 @@
     const fullDate = `${month}/${day}/${year}`;
 
     console.log(fullDate + " " + time + " " + nameTrim + " " + priceTrim);
+
+    //Save data to the text file
+    const logger = fs.createWriteStream('log.txt', { flags: 'a' });
+    logger.write(`${fullDate} - ${time} - ${nameTrim} - ${priceTrim}\n`);
+    logger.close()
 
     //Close browser
     await browser.close();

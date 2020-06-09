@@ -28,8 +28,18 @@
     const nameTrim = name.trim();
     const priceTrim = price.trim();
 
-    console.log("Name: " + nameTrim);
-    console.log("Price: " + priceTrim);
+    // console.log("Name: " + nameTrim);
+    // console.log("Price: " + priceTrim);
+
+    //Get current date and time
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1; //add 1 to ensure the month does not starts from 0
+    const year = date.getFullYear();
+    const time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    const fullDate = `${month}/${day}/${year}`;
+
+    console.log(fullDate + " " + time + " " + nameTrim + " " + priceTrim);
 
     //Close browser
     await browser.close();
